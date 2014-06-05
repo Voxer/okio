@@ -29,7 +29,9 @@ final class Segment {
   // TODO: Using fixed-size segments makes pooling easier. But it harms memory
   //       efficiency and encourages copying. Try variable sized segments?
   // TODO: Is 2 KiB a good default segment size?
-  static final int SIZE = 2048;
+  // JSheehy 2014-06-02 - changed this to 128 down from 2048. It's inefficient for 
+  // Bulk transfer, but seems necessary for now for low-latency streaming
+  static final int SIZE = 128;
 
   final byte[] data = new byte[SIZE];
 
